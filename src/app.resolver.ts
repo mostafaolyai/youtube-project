@@ -1,15 +1,14 @@
-import {
-  BadRequestException,
-  ConflictException,
-  InternalServerErrorException,
-  NotFoundException,
-} from '@nestjs/common';
-import { Resolver, Query } from '@nestjs/graphql';
+import { Resolver, Query, Args } from '@nestjs/graphql';
+import { NotificationService } from './services/notification.service';
 
 @Resolver()
 export class AppResolver {
-  @Query(() => String)
-  hello(): string {
-    throw new Error('i throw custom error: bad request!');
+  constructor(private readonly notificationService: NotificationService) {}
+
+  @Query(() => Boolean)
+  hello(@Args('id') id: string): boolean {
+    this.notificationService.sendNotification(id, 'Hi');
+
+    return true;
   }
 }
