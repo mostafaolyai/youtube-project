@@ -6,6 +6,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { NotificationService } from './services/notification.service';
+import { TypeModule } from './database/typeorm.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { NotificationService } from './services/notification.service';
       },
       inject: [ConfigService],
     }),
+    TypeModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver, NotificationService],
