@@ -2,6 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Mutation {
+  addUser(email: String!, totalPrice: String!): UserEntity!
+}
+
 type Query {
   hello(id: String!): Boolean!
+}
+
+type UserEntity {
+  email: String!
+  totalPrice: String!
 }
