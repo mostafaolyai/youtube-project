@@ -1,0 +1,14 @@
+  version: "3"
+  services:
+    sonarqube:
+      image: sonarqube:community
+      container_name: sonarqube
+      restart: unless-stopped
+      ports:
+        - "9500:9000"
+      environment:
+        SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+      volumes:
+        - ${PWD}/.docker/sonarqube_data:/opt/sonarqube/data
+        - ${PWD}/.docker/sonarqube_extensions:/opt/sonarqube/extensions
+        - ${PWD}/.docker/sonarqube_logs:/opt/sonarqube/logs
