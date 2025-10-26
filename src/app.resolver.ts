@@ -11,4 +11,10 @@ export class AppResolver {
 
     return true;
   }
+  @Query(() => Boolean)
+  bye(@Args('id') id: string): boolean {
+    this.notificationService.sendNotification(id, 'Hi');
+
+    return true;
+  }
 }
